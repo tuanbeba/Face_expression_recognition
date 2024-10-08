@@ -24,9 +24,9 @@ You have to download the fer2013.csv file and put it in the data folder then run
 
 You can find weight and curve in checkpoints folder.
 
-![Accuracy](.\checkpoints\1\accuracy_curve.png)
+![Accuracy](checkpoints\1\accuracy_curve.png)
 
-![Loss](.\checkpoints\1\loss_curve.png)
+![Loss](checkpoints\1\loss_curve.png)
 
 
 
