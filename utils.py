@@ -10,8 +10,6 @@ from torch.utils.data import DataLoader
 def multiclass_accuracy(y_pred,y_true):
     # Lấy nhãn dự đoán
     y_pred_labels = torch.argmax(y_pred, dim=1)
-    
-    # So sánh nhãn dự đoán với nhãn thực tế và tính trung bình số lượng đúng
     accuracy = (y_pred_labels == y_true).float().mean().item()
 
     return accuracy
@@ -20,7 +18,7 @@ def get_transforms():
     train_augs = T.Compose([
         T.RandomHorizontalFlip(p = 0.5),
         T.RandomRotation(degrees=(-20, +20)),
-        T.ToTensor()#PIL / numpy arr -> torch tensor -> (h , w, c) -> (c, h, w)
+        T.ToTensor()
     ])
 
     test_augs = T.Compose([
@@ -67,8 +65,6 @@ def view_visualize(train_losses, test_losses,train_accuracies, test_accuracies, 
     #lưu biểu đồ
     save_path = os.path.join(output_dir,'loss_curve.png')
     plt.savefig(save_path)
-    # Hiển thị biểu đồ
-    plt.show()
     plt.close()
 
     # Vẽ biểu đồ đường cho array1 và array2 với các màu khác nhau
@@ -84,13 +80,8 @@ def view_visualize(train_losses, test_losses,train_accuracies, test_accuracies, 
 
     # Hiển thị chú giải để phân biệt hai đường
     plt.legend()
-
     #lưu biểu đồ
     save_path = os.path.join(output_dir,'accuracy_curve.png')
     plt.savefig(save_path)
-
-    # Hiển thị biểu đồ
-    plt.show()
-
     plt.close()
 

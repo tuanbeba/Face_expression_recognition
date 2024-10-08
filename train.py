@@ -34,7 +34,7 @@ class Trainer:
         train_accs = []
         test_accs = []
 
-        min_test_loss = np.Inf
+        min_test_loss = np.inf
         model = self.create_model()
         optimizer = torch.optim.Adam(model.parameters(), lr = self.lr)
 
@@ -109,7 +109,7 @@ class Trainer:
 def main():
     batch_size = 16
     num_workers = 4
-    epochs=50
+    epochs= 5
     # dataset = FaceExpressionDataset(r"data\fer2013.csv")
 
     # train_folder_path, test_folder_path = dataset.pre_data()
@@ -117,10 +117,10 @@ def main():
     train_folder_path, test_folder_path = r"data\train", r"data\test"
 
     train_augs, test_augs = get_transforms()
-    trainloader,testloader = create_dataloader(train_folder_path,test_folder_path, train_augs, test_augs, batch_size,num_workers,epochs=50)
+    trainloader,testloader = create_dataloader(train_folder_path,test_folder_path, train_augs, test_augs, batch_size,num_workers= num_workers)
     output = r"checkpoints"
 
-    trainer =Trainer(trainloader=trainloader,testloader=testloader,output_dir=output)
+    trainer =Trainer(trainloader=trainloader,testloader=testloader,output_dir=output, epochs=epochs)
     trainer.train()
 if __name__ == "__main__":
     main()
